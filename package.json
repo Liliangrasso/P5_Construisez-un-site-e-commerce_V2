@@ -1,0 +1,23 @@
+{
+  "name": "p5_construisez-un-site-e-commerce_v2",
+  "version": "1.0.0",
+  "description": "Projet d'étude OpenClassRoom",
+  "main": "index.js",
+  "dependencies": {
+    "bootstrap": "^4.6.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Liliangrasso/P5_Construisez-un-site-e-commerce_V2.git"
+  },
+  "author": "Grasso Lilian",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Liliangrasso/P5_Construisez-un-site-e-commerce_V2/issues"
+  },
+  "homepage": "https://github.com/Liliangrasso/P5_Construisez-un-site-e-commerce_V2#readme"
+}
