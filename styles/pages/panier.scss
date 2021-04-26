@@ -1,0 +1,115 @@
+﻿@import "../import/main";
+
+
+.btn-danger {
+    color: white;
+    background-color: #EB5757;
+    border: none;
+    border-radius: .3em;
+    font-weight: bold;
+}
+
+.btn-danger:hover {
+    background-color: #CC4C4C;
+}
+
+.cart-total {
+    text-align: end;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.cart-total-title {
+    font-weight: bold;
+    font-size: 1.5em;
+    margin-right: 10px;
+}
+
+.affichageTotalPrice {
+    color: #333;
+    font-size: 1.1em;
+    margin-top: 4px;
+}
+
+.btn-purchase {
+    display: block;
+    margin: 40px auto 20px auto;
+    font-size: 1.75em;
+}
+
+// Paiement
+
+#buy{
+    min-width: 80%;
+    opacity: 0;
+    transition: all 1s ease-in-out;
+    p{
+        color: white;
+        text-align: left;
+    }
+    input, select{
+        border: 1px solid rgb(0 0 0 / 20%);
+    }
+}
+
+// Produit
+        .productContainer{
+            box-shadow: 5px 3px 3px 0px rgb(0 0 0 / 40%);
+            .productImg{
+                padding: unset;
+            }
+        }
+        
+/************ Formulaire **********/
+    #containerFormulaire{
+        box-shadow: 3px 3px 30px 2px rgb(0 0 0 / 40%);
+    }
+
+// Animation formulaire
+.fa-times{
+    display: none;
+}
+.validRotate{
+    animation-name: valid-rotate;
+    animation-duration: .5s;
+    animation-timing-function: ease-in-out;
+    border: #28a745 solid 1px;
+    color: #28a745;
+}
+.invalid{
+    animation-name: invalid;
+    opacity: 1;
+    animation-duration: .5s;
+    border: #dc3545 solid 1px;
+    color: #dc3545;
+    animation-timing-function: ease-in-out;
+}
+@keyframes valid-rotate{
+    from{
+        -webkit-transform: rotate(0);
+        transform: rotate(0);
+        border-radius: 50%;    
+    }to{
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+        border-radius: 50%;      
+    }
+
+}
+@keyframes invalid{
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
