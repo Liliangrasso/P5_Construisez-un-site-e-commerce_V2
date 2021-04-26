@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="" href="">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+
+    <!-- Polices -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <script src="https://kit.fontawesome.com/64d8dac4f4.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../styles/css/panier.css" />
+    <title>OriCams - Panier</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand bg-secondary navbar-dark justify-content-center fixed-nav">
+        <div class="container">
+            <ul class="navbar-nav nav-justified w-100 text-center align-baseline mt-1">
+                <li class="nav-item">
+                    <a href="../index.html" class="nav-link d-flex flex-column">
+                        <span class="fas fa-home fa-lg"></span>
+                        <span class="d-none d-sm-inline mt-1">Home</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <header class="container-fluid bg-primary">
+        <div class="row justify-content-center">
+            <img src="../img/Logo_v2.png" class="mt-4 mb-4">
+        </div>
+        <div class="row text-center flex-column ml-2 mr-2">
+            <h1>OriCams</h1>
+            <h2>Vente de cameras vintage</h2>
+        </div>
+    </header>
+    <main class="container">
+        <h2 class="mt-0 text-center">Vôtre panier</h2>
+        <button type="button" id="delete-card" class="justify-content-center btn btn-danger ml-3 mb-2">
+            <i class="fas fa-trash-alt mr-2 text-right"></i>Vider le panier</button>
+        <div class="row justify-content-center">
+            <div class="col-12">
+                <div class="col">
+                    <!-- Table  -->
+                    <table class="table table-image">
+                        <thead class="thead-dark">
+                        </thead>
+                        <!-- Table body with the list of products -->
+                        <tbody id="panierList">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="cart-total d-flex justify-content-center flex-wrap">
+                    <p class="cart-total-title h3">Votre total est de :</p>
+                    <span id="totalCard" class="d-flex align-baseline ml-0 affichageTotalPrice h5">0€</span>
+                </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div id="paiement" class="container mt-3"></div>
+            </div>
+        </div>
+    </main>
+    <footer class="bg-light text-center text-lg-start">
+        <div class="container p-4">
+            <!--Grid row-->
+            <div class="row">
+                <!--Grid column-->
+                <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+                    <h5 class="text-uppercase">Qui somme nous ?</h5>
+
+                    <p>OriCams est une entreprise spécialisé dans la vente de cameras vintage en ligne</p>
+                </div>
+                <!--Grid column-->
+
+                <!--Grid column-->
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase">A propos</h5>
+
+                    <ul class="list-unstyled mb-0">
+                        <li>
+                            <a href="#!" rel="nofollow" class="text-dark">Condition générales de vente</a>
+                        </li>
+                        <li>
+                            <a href="#!" rel="nofollow" class="text-dark">Mentions légales</a>
+                        </li>
+                        <li>
+                            <a href="#!" rel="nofollow" class="text-dark">presse</a>
+                        </li>
+                        <li>
+                            <a href="#!" rel="nofollow" class="text-dark">OriCams</a>
+                        </li>
+                    </ul>
+                </div>
+                <!--Grid column-->
+
+                <!--Grid column-->
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase mb-0">Nos réseaux sociaux</h5>
+                    <a href="#" class="card-link btn btn-md cardBottum mt-2">
+                        <span class="fab fa-instagram"></span>
+                    </a>
+                    <a href="#" class="card-link btn btn-md cardBottum mt-2">
+                        <span class="fab fa-twitter"></span>
+                    </a>
+                </div>
+                <!--Grid column-->
+            </div>
+            <!--Grid row-->
+        </div>
+        <!-- Grid container -->
+
+        <!-- Copyright -->
+        <div class="text-center p-3 bg-primary">
+            © 2021 Copyright:
+            <a class="text-dark" href="#">OriCams</a>
+        </div>
+        <!-- Copyright -->
+        </div>
+    </footer>
+    <!-- Code javaScript -->
+    <script src="../js/panier.js"></script>
+</body>
+
+</html>
