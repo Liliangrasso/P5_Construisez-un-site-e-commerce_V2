@@ -18,7 +18,9 @@ Apprendre JS en construisant un site de e-commerce
 
 ### Pré-requis
 
-Pour pouvoir accéder à OriCams, il suffit de posséder un moteur de recherche
+<p>Vous devez avoir installer node.js pour que OriCams fonctionne à 100%</p>
+<p>Pour commencez lancez vôtre console puis rendez-vous dans P5_Construisez-un-site-e-commerce_V2\server</p>
+<p>pour finir taper npm start</p>
 
 Par exemple:
 
