@@ -23,7 +23,7 @@ function domReady() {
 }
 document.addEventListener('DOMContentLoaded', domReady);
 
-
+//Affichage du panier
 function populatePanier(panier) {
 
     let listOfPanier = '';
@@ -92,7 +92,7 @@ function populatePanier(panier) {
 
 
 }
-
+//Affichage du formulaire
 function displayAndLisenFormulaire(form) {
     const structureFormulaire = `
                     <div class="row" id="containerFormulaire" >
@@ -340,11 +340,9 @@ function displayAndLisenFormulaire(form) {
     cvv.addEventListener('change', function () {
         validationFormulaire(this.id);
     })
-
+//Ajout d'un événement lors du submit sur le formulaire
     document.getElementById('form').addEventListener('submit', (e) => {
         e.preventDefault;
-        validationFormulaire();
-        console.log('ok')
         //Récupération des données
         let contact = {
             firstName: document.getElementById("inputFirstName").value,
@@ -358,7 +356,6 @@ function displayAndLisenFormulaire(form) {
         panier.forEach(element => {
             products.push(element._id)
         });
-        console.log(products)
         let commandes = {
             contact: contact,
             products: products
@@ -373,39 +370,50 @@ function displayAndLisenFormulaire(form) {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(commandes)
-            });
+            })
+            .then(async (response) => {
+                try {
+                    const retour = await response.json();
+                    const idCommande = retour.orderId;
+                    localStorage.setItem('orderID', idCommande)
+                    localStorage.setItem('contact', JSON.stringify(contact))
+                    document.location.href ="commande.html"
+                } catch (e) {
+                    console.log(e)
+                }
+            })
         }
         send()
     })
 }
-
+/* Initialisation des valeurs de départ des champs de saisie */
+var initForm = {
+    "inputLastName": false,
+    "inputFirstName": false,
+    'inputEmail': false,
+    'inputPhone': false,
+    'inputAddress': false,
+    'inputCity': false,
+    'inputZip': false,
+    'ccname': false,
+    'ccnumber': false,
+    'ccmonth': false,
+    'ccyear': false,
+    'cvv': false
+}
+//Vérification du Formulaire
 function validationFormulaire(idInput) {
-    /* Initialisation des valeurs de départ des champs de saisie */
-    var initForm = {
-        "inputLastName": false,
-        "inputFirstName": false,
-        'inputEmail': false,
-        'inputPhone': false,
-        'inputAddress': false,
-        'inputCity': false,
-        'inputZip': false,
-        'ccname': false,
-        'ccnumber': false,
-        'ccmonth': false,
-        'ccyear': false,
-        'cvv': false
-    }
     /* Définitions des RegExp et du comportement souhaité */
     let regExp;
     let caseName = document.getElementById('ccname');
     let IdInput;
     switch (idInput) {
         case 'inputLastName':
-            regExp = new RegExp('[/abcdefghijklmnopqrstxyz/]$', 'g');
+            regExp = new RegExp('[abcdefghijklmnopqrstxyz]$', 'g');
             IdInput = 0;
             break;
         case 'inputFirstName':
-            regExp = new RegExp('[/abcdefghijklmnopqrstxyz/]$', 'g');
+            regExp = new RegExp('[abcdefghijklmnopqrstxyz]$', 'g');
             IdInput = 1;
             break;
         case 'inputEmail':
@@ -459,7 +467,6 @@ function validationFormulaire(idInput) {
         icon.classList.add("validRotate");
         caseName.value = inputLastName.value + ' ' + inputFirstName.value;
         initForm.input = true;
-        //console.log(input.value)
     } else if (IdInput >= 8) {
         input.style.borderColor = '#28a745'
     }
