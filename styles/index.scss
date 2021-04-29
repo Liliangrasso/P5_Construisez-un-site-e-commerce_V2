@@ -25,6 +25,7 @@ body{
                     background-color: rgba(35, 35, 35, 0.9);
                     height: 100%;
                     width: 100%;
+                    transition: ease .6s;
                 &::after{
                     content: "+";
                     font-size: 38px;
