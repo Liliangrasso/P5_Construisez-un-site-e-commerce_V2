@@ -1,6 +1,7 @@
 ﻿const search = window.location.search
 const param = new URLSearchParams(search)
 const id = param.get('id')
+//Récupération des cameras avec redirection a la page en rapport a la camera avec l'id
 fetch('http://localhost:3000/api/cameras/' + id)
     .then(response => response.json())
     .then(response => {
@@ -8,12 +9,13 @@ fetch('http://localhost:3000/api/cameras/' + id)
     })
     .catch(error => alert(error));
 
-
+//Affichage du produit séléctionnez
 function populateProduct(response) {
     let lentilles = ""
     response.lenses.forEach(element => {
         lentilles += `<option >${element}</option>`
     });
+    //Structure de l'affichage du produit
     const product = `
         <div class="row productContainer">
             <div class="productImg col-lg-7">
@@ -46,15 +48,19 @@ function populateProduct(response) {
         </div>
       `
     document.getElementById('product').innerHTML = product;
+    //Création d'un événement pour le bouton ajouter au panier
     document.getElementById('panierLink').addEventListener("click", () => {
+        //Récupération de la lentille séléctionnez
         let lentillesSelected = document.getElementById("option").value
         response.lenses = lentillesSelected
+        //Si l'utilisateur à déjà un item dans le panier
         if (localStorage.getItem("panier")) {
             const panier = JSON.parse(localStorage.getItem('panier'))
             panier.push(response)
             localStorage.setItem("panier", JSON.stringify(panier))
             alert("Article ajouter au panier !")
         } else {
+            //Si l'utilisateur n'a pas de panier alors création du panier
             localStorage.setItem("panier", JSON.stringify([response]))
         }
     })
