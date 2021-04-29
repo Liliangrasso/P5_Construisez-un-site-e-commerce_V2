@@ -1,3 +1,4 @@
+//Récupération des cameras sur le serveur
 function domReady() {
     fetch('http://localhost:3000/api/cameras')
         .then(response => response.json())
@@ -9,10 +10,10 @@ function domReady() {
 }
 document.addEventListener('DOMContentLoaded', domReady);
 
-
+//Affichage des cameras
 function populateTableList(response) {
     let listOfProducts = '';
-
+    
     response.forEach(items =>
         listOfProducts += `
     <div class="itemShop col-lg-4 mt-4">
