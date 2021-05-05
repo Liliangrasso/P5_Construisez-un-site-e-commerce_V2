@@ -58,20 +58,15 @@ function populatePanier(panier) {
         </div>
       `   )
     document.getElementById('panierList').innerHTML = listOfPanier;
-    // Suppression du panier //
+    // Déclanche la suppression du panier //
     document.getElementById('delete-card').addEventListener("click", () => {
-        localStorage.clear();
-        location.reload();
+        deleteAllPanier()
     });
     // Suppression d'un items du panier //
     const buttons = document.getElementsByClassName('delete-items')
     Array.prototype.forEach.call(buttons, button => {
-        button.addEventListener("click", (e) => {
-            const panier = JSON.parse(localStorage.getItem('panier'))
-            const id = parseInt(e.target.dataset.id)
-            panier.splice(id, 1)
-            localStorage.setItem('panier', JSON.stringify(panier))
-            window.location.reload();
+        button.addEventListener("click", (r) => {
+            deleteOnePanier(r)
         })
     })
 
@@ -89,9 +84,21 @@ function populatePanier(panier) {
     ${totalPrice}€
     </span>`
     document.getElementById('totalCard').innerHTML = affichageTotalPrice;
-
-
 }
+//Supression du panier
+function deleteAllPanier() {
+    localStorage.clear();
+    location.reload();
+}
+//Suppression d'un item du panier
+function deleteOnePanier(r) {
+    const panier = JSON.parse(localStorage.getItem('panier'))
+    const id = parseInt(r.target.dataset.id)
+    panier.splice(id, 1)
+    localStorage.setItem('panier', JSON.stringify(panier))
+    window.location.reload();
+}
+
 //Affichage du formulaire
 function displayAndLisenFormulaire(form) {
     const structureFormulaire = `
@@ -343,48 +350,47 @@ function displayAndLisenFormulaire(form) {
 //Ajout d'un événement lors du submit sur le formulaire
     document.getElementById('form').addEventListener('submit', (e) => {
         e.preventDefault;
-        //Récupération des données
-        let contact = {
-            firstName: document.getElementById("inputFirstName").value,
-            lastName: document.getElementById("inputLastName").value,
-            address: document.getElementById("inputAddress").value,
-            city: document.getElementById("inputCity").value,
-            email: document.getElementById("inputEmail").value
-        }
-        let panier = JSON.parse(localStorage.getItem("panier"));
-        var products = []
-        panier.forEach(element => {
-            products.push(element._id)
-        });
-        let commandes = {
-            contact: contact,
-            products: products
-        }
-        
-        // Envoie des données au serveur
-        function send() {
-            fetch("http://localhost:3000/api/cameras/order", {
-                method: "POST",
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(commandes)
-            })
+        dataRecoveryAndPost()
+    })
+}
+function dataRecoveryAndPost() {
+    //Récupération des données
+    let contact = {
+        firstName: document.getElementById("inputFirstName").value,
+        lastName: document.getElementById("inputLastName").value,
+        address: document.getElementById("inputAddress").value,
+        city: document.getElementById("inputCity").value,
+        email: document.getElementById("inputEmail").value
+    }
+    let panier = JSON.parse(localStorage.getItem("panier"));
+    var products = []
+    panier.forEach(element => {
+        products.push(element._id)
+    });
+    let commandes = {
+        contact: contact,
+        products: products
+    }
+    // Envoie des données au serveur
+        fetch("http://localhost:3000/api/cameras/order", {
+            method: "POST",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(commandes)
+        })
             .then(async (response) => {
                 try {
                     const retour = await response.json();
                     const idCommande = retour.orderId;
                     localStorage.setItem('orderID', idCommande)
                     localStorage.setItem('contact', JSON.stringify(contact))
-                    document.location.href ="commande.html"
+                    document.location.href = "commande.html"
                 } catch (e) {
                     console.log(e)
                 }
-            })
-        }
-        send()
-    })
+        })
 }
 /* Initialisation des valeurs de départ des champs de saisie */
 var initForm = {

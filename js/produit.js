@@ -53,15 +53,21 @@ function populateProduct(response) {
         //Récupération de la lentille séléctionnez
         let lentillesSelected = document.getElementById("option").value
         response.lenses = lentillesSelected
-        //Si l'utilisateur à déjà un item dans le panier
-        if (localStorage.getItem("panier")) {
-            const panier = JSON.parse(localStorage.getItem('panier'))
-            panier.push(response)
-            localStorage.setItem("panier", JSON.stringify(panier))
-            alert("Article ajouter au panier !")
-        } else {
-            //Si l'utilisateur n'a pas de panier alors création du panier
-            localStorage.setItem("panier", JSON.stringify([response]))
-        }
+        //Déclanchement de l'ajout au panier
+        ajoutPanier(response)
     })
+}
+
+//Ajout au panier
+function ajoutPanier(data) {
+    //Si l'utilisateur à déjà un item dans le panier
+    if (localStorage.getItem("panier")) {
+        const panier = JSON.parse(localStorage.getItem('panier'))
+        panier.push(data)
+        localStorage.setItem("panier", JSON.stringify(panier))
+        alert("Article ajouter au panier !")
+    } else {
+        //Si l'utilisateur n'a pas de panier alors création du panier
+        localStorage.setItem("panier", JSON.stringify([data]))
+    }
 }
