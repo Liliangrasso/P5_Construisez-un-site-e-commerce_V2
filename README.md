@@ -18,19 +18,17 @@ Apprendre JS en construisant un site de e-commerce
 
 ### Pré-requis
 
-<p>Vous devez avoir installer node.js pour que OriCams fonctionne à 100%</p>
+## Avec Node
 <p>Pour commencez lancez vôtre console puis rendez-vous dans P5_Construisez-un-site-e-commerce_V2\server</p>
 <p>pour finir taper npm start</p>
 
-Par exemple:
-
-<a href="https://fr.wikipedia.org/wiki/Liste_de_moteurs_de_recherche">
-<img src="https://img.icons8.com/color/48/000000/google-logo.png" width="70" height="70" /><img src="https://img.icons8.com/color/48/000000/adventures--v1.png" width="70" height="70" /><img src="https://img.icons8.com/color/48/000000/firefox.png" width="70" height="70" />
-</a>
+## Sans Node
+<p>Node JS est indispensable pour OriCams</p>
+<p>Pour installer node rendez-vous sur https://nodejs.org/en/download/ </p>
 
 ## Se rendre sur Oricams
 
-Rien de plus simple, cliquez <a href="https://liliangrasso.github.io/P5_Construisez-un-site-e-commerce/ index.html">ici</a> !
+Rien de plus simple, ouvrez index.html
 
 ## Outils utilisés 
 
